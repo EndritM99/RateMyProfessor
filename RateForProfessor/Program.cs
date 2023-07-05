@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using RateForProfessor.Context;
+using RateForProfessor.Mappings;
 using RateForProfessor.Repositories;
 using RateForProfessor.Repositories.Interfaces;
-using RateForProfessor.Services.Interfaces;
 using RateForProfessor.Services;
 using FluentValidation.AspNetCore;
 using System.Reflection;
@@ -12,6 +12,8 @@ using RateForProfessor.Mappings;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using RateForProfessor.Services.Interfaces;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,6 +51,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(UserProfileMapping));
 builder.Services.AddScoped<IUserRegistrationRepository, UserRegistrationRepository>();
 builder.Services.AddScoped<IUserRegistrationService, UserRegistrationService>();
+builder.Services.AddScoped<IProfessorRepository, ProfessorRepository>();
+builder.Services.AddScoped<IProfessorService, ProfessorService>();
+builder.Services.AddScoped<IRateProfessorRepository, RateProfessorRepository>();
+builder.Services.AddScoped<IRateProfessorService, RateProfessorService>();
 
 var app = builder.Build();
 
