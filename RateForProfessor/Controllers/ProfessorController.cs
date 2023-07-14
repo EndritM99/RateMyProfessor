@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RateForProfessor.Enums;
 using RateForProfessor.Models;
 using RateForProfessor.Services.Interfaces;
 using RateForProfessor.Validators;
@@ -16,6 +17,7 @@ namespace RateForProfessor.Controllers
             _professorService = professorService;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public List<Professor> GetAllProfessors()
         {

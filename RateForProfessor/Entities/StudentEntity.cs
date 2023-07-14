@@ -29,6 +29,8 @@ namespace RateForProfessor.Entities
         [Required]
         public string Password { get; set; }
 
+        public Role Role { get; set; }
+
         public int Grade { get; set; }
 
         public Gender Gender { get; set; }

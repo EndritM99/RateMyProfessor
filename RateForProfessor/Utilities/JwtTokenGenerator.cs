@@ -35,6 +35,7 @@ namespace RateForProfessor.Utilities
                 Subject = new ClaimsIdentity(new[]
                 {
                 new Claim(ClaimTypes.Name, student.Email),
+                new Claim(ClaimTypes.Role, student.Role.ToString()),
             }),
                 Expires = DateTime.UtcNow.AddHours(1), // Set token expiration time
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

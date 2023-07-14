@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using RateForProfessor.Enums;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,7 +75,11 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddControllers();
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("UserOnly", policy => policy.RequireRole(Role.User.ToString()));
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole(Role.Admin.ToString()));
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
