@@ -44,32 +44,6 @@ namespace RateForProfessor.Controllers
         {
             return _registrationService.GetStudentByName(name);
         }
-
-       [HttpPost("CreateStudent")]
-        public IActionResult CreateStudent([FromForm] Student student, IFormFile file)
-        {
-            StudentValidator validator = new StudentValidator();
-            var validationResult = validator.Validate(student);
-
-            if (!validationResult.IsValid)
-            {
-                foreach (var error in validationResult.Errors)
-                {
-                    ModelState.AddModelError("", error.ErrorMessage);
-                }
-                return BadRequest(ModelState);
-            }
-            try
-            {
-                string photoPath = SaveProfilePhoto(file);
-                var createdStudent = _registrationService.CreateStudent(student, photoPath);
-                return Ok(createdStudent);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "An error occurred while creating the student.");
-            }
-        }
         
         [Authorize(Roles = "Student")]
         [HttpPut("UpdateStudent/{id}")]

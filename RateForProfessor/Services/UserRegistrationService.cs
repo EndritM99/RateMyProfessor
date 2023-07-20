@@ -63,22 +63,22 @@ namespace RateForProfessor.Services
             _userRegistrationRepository.UpdateStudent(updatedStudent);
         }
 
-        public Student CreateStudent(Student student, string photoPath)
-        {
-            try
-            {
-                var studentEntity = _mapper.Map<StudentEntity>(student);
-                studentEntity.User.Role = Enums.Role.Student;
-                var result = _userRegistrationRepository.CreateStudent(studentEntity, photoPath);
+        //public Student CreateStudent(Student student, string photoPath)
+        //{
+        //    try
+        //    {
+        //        var studentEntity = _mapper.Map<StudentEntity>(student);
+        //        studentEntity.User.Role = Enums.Role.Student;
+        //        var result = _userRegistrationRepository.CreateStudent(studentEntity, photoPath);
 
-                var studentCreated = _mapper.Map<Student>(result);
-                return studentCreated;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        //        var studentCreated = _mapper.Map<Student>(result);
+        //        return studentCreated;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
 
         public void UploadProfilePhoto(int studentId, string photoPath)
         {

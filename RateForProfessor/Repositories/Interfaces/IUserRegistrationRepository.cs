@@ -10,7 +10,7 @@ namespace RateForProfessor.Repositories.Interfaces
 
         public StudentEntity GetStudentByEmail(string email);
 
-        StudentEntity CreateStudent(StudentEntity student, string photoPath);
+        //StudentEntity CreateStudent(StudentEntity student, string photoPath);
 
         public void UpdateStudent(StudentEntity student);
 

@@ -61,14 +61,14 @@ namespace RateForProfessor.Repositories
             _dbContext.SaveChanges();
         }
 
-        public StudentEntity CreateStudent(StudentEntity student, string photoPath)
-        {
-            student.ProfilePhotoPath = photoPath;
-            _dbContext.Students.Add(student);
-            _dbContext.SaveChanges();
+        //public StudentEntity CreateStudent(StudentEntity student, string photoPath)
+        //{
+        //    student.ProfilePhotoPath = photoPath;
+        //    _dbContext.Students.Add(student);
+        //    _dbContext.SaveChanges();
 
-            return student;
-        }
+        //    return student;
+        //}
 
         public void UploadProfilePhoto(int studentId, string photoPath)
         {
