@@ -73,7 +73,7 @@ namespace RateForProfessor.Controllers
         }
 
         [HttpPut("UpdateStudent/{id}")]
-        public IActionResult UpdateStudent(int id, [FromForm] Student student, IFormFile file)
+        public IActionResult UpdateStudent(int id, Student student)
         {
             StudentValidator validator = new StudentValidator();
             var validationResult = validator.Validate(student);
@@ -91,14 +91,13 @@ namespace RateForProfessor.Controllers
             {
                 //string photoPath = FileUploadHelper.SaveProfilePhoto(file);
                 var oldStudent = _registrationService.GetStudentById(id);
-                string photoPath = FileUploadHelper.SaveProfilePhoto(file);
                 if (oldStudent == null)
                 {
                     return NotFound();
                 }
 
                 // Thirr metoden perkatese te servisit per perditesim
-                _registrationService.UpdateStudent(student, photoPath);
+                _registrationService.UpdateStudent(student);
 
                 return NoContent();
             }

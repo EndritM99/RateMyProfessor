@@ -14,7 +14,8 @@ namespace RateForProfessor.Services.Interfaces
 
         public Student CreateStudent(Student student, string photoPath);
 
-        public void UpdateStudent(Student student, string photoPath);
+        //public void UpdateStudent(Student student, string photoPath);
+        public void UpdateStudent(Student student);
 
         public void DeleteStudent(int id);
 

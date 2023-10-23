@@ -62,10 +62,16 @@ namespace RateForProfessor.Repositories
                     _dbContext.Entry(oldstudent).CurrentValues.SetValues(student);
                     _dbContext.SaveChanges();
                 }*/
-        public void UpdateStudent(StudentEntity student, string photoPath)
+        //public void UpdateStudent(StudentEntity student, string photoPath)
+        //{
+        //    var oldstudent = _dbContext.Students.Find(student.StudentId);
+        //    oldstudent.ProfilePhotoPath = photoPath;
+        //    _dbContext.Entry(oldstudent).CurrentValues.SetValues(student);
+        //    _dbContext.SaveChanges();
+        //}
+        public void UpdateStudent(StudentEntity student)
         {
             var oldstudent = _dbContext.Students.Find(student.StudentId);
-            oldstudent.ProfilePhotoPath = photoPath;
             _dbContext.Entry(oldstudent).CurrentValues.SetValues(student);
             _dbContext.SaveChanges();
         }
